@@ -15,8 +15,8 @@
                     <tbody>
                     	<?php foreach($info as $i):?>
 	                        <tr>
-	                            <td><a href="javascript:send_to_parent('<?php echo $i['itemno']?>');"><?php echo $i['itemno']?></a></td>
-	                            <td><a href="javascript:send_to_parent('<?php echo $i['itemno']?>');"><?php echo $i['itemname']?></a></td>
+	                            <td><a href="javascript:send_to_parent('<?php echo $i['itemno']?>', '<?php echo $i['itemname']?>');"><?php echo $i['itemno']?></a></td>
+	                            <td><a href="javascript:send_to_parent('<?php echo $i['itemno']?>', '<?php echo $i['itemname']?>');"><?php echo $i['itemname']?></a></td>
 	                            <td><?php echo $i['categoryname']?></td>
 	                            <td><?php echo $i['itemtype']?></td>
 	                        </tr>
@@ -36,11 +36,12 @@
     //     //alert('<?php echo uri_string();?>');
     // });
 
-    function send_to_parent(this_value){
+    function send_to_parent(this_value, value_2){
         if($('#htextFormID').val() == 'form_item'){
             window.location.replace(base_url_js+'warehouse/forms/item-manager.php?id='+this_value);
         }else{
             $('#textItemNo', '#form_req').val(this_value);
+            $('#textDesc', '#form_req').val(value_2);
             $('#myModal').modal('hide');
         }
     }

@@ -94,6 +94,11 @@ class Procurement extends CI_Controller {
 				$this->load->model('procurement_model');
 	    		$return_id = $this->procurement_model->edit($what);
 				break;
+			case 'req_details':
+				$data['uom'] = get_items_from_cache("unit");
+				$data['info'] = getdata("select * from tbl_requestdtl where 1 and reqno = '{$_GET['reqno']}'");
+				$return_id = $this->load->view('procurement/requisition-details', $data, TRUE);
+				break;
 		}
 
 	    echo $return_id;

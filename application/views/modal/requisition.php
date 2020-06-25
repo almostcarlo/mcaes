@@ -23,7 +23,8 @@
                     <tbody>
                     	<?php foreach($info as $i):?>
 	                        <tr>
-	                            <td><a href="<?php echo BASE_URL;?>procurement/forms/requisition-transaction.php?id=<?php echo $i['reqno']?>"><?php echo $i['reqno']?></a></td>
+	                            <!-- <td><a href="<?php echo BASE_URL;?>procurement/forms/requisition-transaction.php?id=<?php echo $i['reqno']?>"><?php echo $i['reqno']?></a></td> -->
+                                <td><a href="javascript:send_to_parent('<?php echo $i['reqno']?>', '');"><?php echo $i['reqno']?></a></td>
 	                            <td class="text-center"><?php echo dateformat($i['reqdt'],2);?></td>
 	                            <td class="text-center"><?php echo $department[$i['reqdept']];?></td>
 	                            <td><?php echo $i['remarks']?></td>
@@ -39,3 +40,19 @@
     
     
 </form>
+<script type="text/javascript">
+    function send_to_parent(this_value, value_2){
+        if($('#htextFormID').val() == 'form_rec'){
+            window.location.replace(base_url_js+'procurement/forms/requisition-transaction.php?id='+this_value);
+        }else{
+            $('#textReqNo', '#form_canvass').val(this_value);
+            $('#myModal').modal('hide');
+
+            /*GET REQUISITION ITEMS*/
+            
+             $.get(base_url_js+'procurement/ajax/req_details/get', {reqno:this_value}, function(data) {
+                 $('#req_item_cont', '#form_canvass').html(data);
+             });
+        }
+    }
+</script>

@@ -1,10 +1,14 @@
-
 <!-- PAGE CONTENT -->
+<div class="" role="main">
 
-	<!-- INSURANCE REQUEST ENTRIES - ADD FORMS -->
 	<div class="row">
 		
 		<div class="col-md-12">
+			<?php flashNotification();?>
+            <div id="frm_ErrorNotice" class="alert alert-danger alert-dismissible hidden" role="alert" style="margin-top:10px;">
+                Sample Alert Message!
+            </div>
+
 			<div class="x_panel tile">
 				<div class="x_title">
 					<h2>Canvass - Add Form</h2>
@@ -16,16 +20,15 @@
 				</div>
 				<div class="x_content">
 					
-					<form action="" method="post">
-						<input type="hidden" id="workers" name="workers" value="">
+					<?php echo form_open('procurement/add/canvass', 'id="form_canvass"');?>
 						<h4>CANVASS DETAILS</h4>
 
 						<div class="row">
 							<div class="col-md-2">
 								<div class="form-group">
 									<div class="input-group">
-										<label for="inputWorkersName">Canvass No.:</label>
-										<input type="text" class="form-control" id="inputWorkersName" placeholder="" readonly value="" />
+										<label for="">Canvass No.:</label>
+										<input type="text" class="form-control" id="textCanvassNo" name="textCanvassNo" placeholder="" readonly="" />
 										
 									</div>
 								</div>
@@ -36,7 +39,7 @@
 								<div class="form-group">
 									<label for="inputTransactionDate">Canvass Date:</label>
 									<div class="input-group date" id="calTransactionDate">
-										<input type="text" class="form-control" name="trndt" value="<?=date("m.d.Y H:i:s") ?>" id="inputTransactionDate"/>
+										<input type="text" class="form-control" name="textCanvassDate" value="<?php echo dateformat("today",0);?>" id="inputTransactionDate"/>
 										<span class="input-group-addon">
 										   <span class="glyphicon glyphicon-calendar"></span>
 										</span>
@@ -46,10 +49,10 @@
 							<div class="col-md-2">
 								<div class="form-group">
 									<div class="input-group">
-										<label for="inputWorkersName">Requisition No.:</label>
-										<input type="text" class="form-control" id="inputWorkersName" placeholder=""  value="" />
+										<label for="">Requisition No.:</label>
+										<input type="text" class="form-control" id="textReqNo" name="textReqNo" value="" />
 										<span class="input-group-btn" style="top:9px;">
-											<button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalApplicantSearch"><i class="fa fa-chevron-right"></i></button>
+											<button href="<?php echo BASE_URL;?>procurement/modal/requisition" label="Requisition" class="btn btn-default modal_btn" type="button"><i class="fa fa-chevron-right"></i></button>
 										</span>
 									</div>
 								</div>
@@ -67,109 +70,7 @@
 
 						<hr />
 						<h4>REQUISITION DETAILS</h4>
-						<ul class="nav nav-tabs">
-	                        <li class="active"><a role="tab" data-toggle="tab">Requisition Item #999 - description here</a></li>
-	                    </ul>
-						<div class="tab-content">
-                        
-	                        <div role="tabpanel" class="tab-pane active" id="applicant-name">
-	                        	<small>
-		                        	<div class="col-md-5">
-										<div class="form-group">
-											<label for="inputTransactionNum">Requested Quantity:</label> XXX
-										</div>
-										<div class="form-group">
-											<label for="inputTransactionNum">Ordered Quantity:</label> YYY
-										</div>
-										<div class="form-group">
-											<label for="inputTransactionNum">Remaining Quantity:</label> ZZZ
-										</div>
-										<div class="form-group">
-											<label for="inputTransactionNum">Price History:</label> AAA
-										</div>
-									</div>
-								</small>
-	                            <div class="form-group">
-
-	                                <table id="tableApplicantName" class="table table-bordered table-striped table-hover">
-	                                    <thead>
-	                                        <tr>
-	                                            <th>Supplier Name.</th>
-	                                            <th>Brand Name</th>
-	                                            <th>Credit Terms</th>
-	                                            <th>Lead Time</th>
-	                                            <th>Unit Price</th>
-	                                            <th>Quantity</th>
-	                                        </tr>
-	                                    </thead>
-	                                    <tbody>
-	                                        <tr>
-	                                            <td>item here</td>
-	                                            <td></td>
-	                                            <td></td>
-	                                            <td></td>
-	                                            <td></td>
-	                                            <td></td>
-	                                        </tr>
-	                                    </tbody>
-	                                </table>
-	                                
-	                            </div>
-	                        </div>
-	                    </div>
-
-	                    <br>
-
-	                    <ul class="nav nav-tabs">
-	                        <li class="active"><a role="tab" data-toggle="tab">Requisition Item #000 - description here</a></li>
-	                    </ul>
-						<div class="tab-content">
-                        
-	                        <div role="tabpanel" class="tab-pane active" id="applicant-name">
-	                        	<small>
-		                        	<div class="col-md-5 text-sm">
-										<div class="form-group">
-											<label for="inputTransactionNum">Requested Quantity:</label> XXX
-										</div>
-										<div class="form-group">
-											<label for="inputTransactionNum">Ordered Quantity:</label> YYY
-										</div>
-										<div class="form-group">
-											<label for="inputTransactionNum">Remaining Quantity:</label> ZZZ
-										</div>
-										<div class="form-group">
-											<label for="inputTransactionNum">Price History:</label> AAA
-										</div>
-									</div>
-								</small>
-	                            <div class="form-group">
-
-	                                <table id="tableApplicantName" class="table table-bordered table-striped table-hover">
-	                                    <thead>
-	                                        <tr>
-	                                            <th>Supplier Name.</th>
-	                                            <th>Brand Name</th>
-	                                            <th>Credit Terms</th>
-	                                            <th>Lead Time</th>
-	                                            <th>Unit Price</th>
-	                                            <th>Quantity</th>
-	                                        </tr>
-	                                    </thead>
-	                                    <tbody>
-	                                        <tr>
-	                                            <td>item here</td>
-	                                            <td></td>
-	                                            <td></td>
-	                                            <td></td>
-	                                            <td></td>
-	                                            <td></td>
-	                                        </tr>
-	                                    </tbody>
-	                                </table>
-	                                
-	                            </div>
-	                        </div>
-	                    </div>
+						<div id="req_item_cont"></div>
 
 						<!-- <table id="tableAccounts2" class="table table-bordered table-striped table-hover bulk_action">       
 							<thead>
@@ -274,10 +175,22 @@
 </div>
 <!-- END of PAGE CONTENT -->
 
+<!-- MODAL -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 id="modal_title" class="modal-title">Advance Search</h4>
+            </div>
+            <div class="modal-body">
 
-
-
-
-
-
-
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MODAL -->
