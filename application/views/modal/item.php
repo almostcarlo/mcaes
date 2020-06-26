@@ -32,10 +32,6 @@
     
 </form>
 <script type="text/javascript">
-    // $(document).ready(function() {
-    //     //alert('<?php echo uri_string();?>');
-    // });
-
     function send_to_parent(this_value, value_2){
         if($('#htextFormID').val() == 'form_item'){
             window.location.replace(base_url_js+'warehouse/forms/item-manager.php?id='+this_value);

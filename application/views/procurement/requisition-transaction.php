@@ -111,13 +111,13 @@
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="">Unit:</label>
-                                        <select class="form-control" id="selectUnit" name="selectUnit">
-                                            <?php echo dropdown_options('unit', $edit_item['uom']);?>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="">Unit:</label>
+                                    <select class="form-control" id="selectUnit" name="selectUnit">
+                                        <?php echo dropdown_options('unit', $edit_item['uom']);?>
+                                    </select>
                                 </div>
+                            </div>
                             
                             <div class="col-md-2">
                                 <?php if(isset($edit_item)):?>
@@ -130,7 +130,6 @@
                                     </div>
                                 <?php endif;?>
                             </div>
-                            
                         </div>
 
                         <?php if(is_array($info_dtl) && count($info_dtl) > 0):?>

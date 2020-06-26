@@ -194,3 +194,31 @@
     </div>
 </div>
 <!-- END MODAL -->
+
+<script type="text/javascript">
+	/*SAVE ITEM SUPPLIER*/
+	function save_this(itemno){
+         $("#frm_ErrorNotice_"+itemno).addClass("hidden");
+
+        if($('#htextSupplierNo_'+itemno).val() == ''){
+            $('#frm_ErrorNotice_'+itemno).html('Please select supplier.');
+            $('#frm_ErrorNotice_'+itemno).removeClass("hidden");
+        }else if($('#textPrice_'+itemno).val() == ''){
+            $('#frm_ErrorNotice_'+itemno).html('Unit Price is required.');
+            $('#frm_ErrorNotice_'+itemno).removeClass("hidden");
+            $('#textPrice_'+itemno).focus();
+        }else{
+			$.post(base_url_js+'procurement/ajax/add/supplier_temp/', $('#form_supplier_'+itemno).serialize(), function(data) {
+				if(data){
+					/*refresh requesition details*/
+					$.get(base_url_js+'procurement/ajax/req_details/get', {reqno:$('#textReqNo').val()}, function(data) {
+		                 $('#req_item_cont').html(data);
+		             });
+				}else{
+					$('#frm_ErrorNotice_'+itemno).html('unable to add supplier.');
+					$('#frm_ErrorNotice_'+itemno).removeClass("hidden");
+				}
+			});
+        }
+    }
+</script>

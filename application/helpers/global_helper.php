@@ -279,6 +279,11 @@
                     $field_key = "deptid";
                     $field_val = "deptname";
                     break;
+                case 'supplier':
+                    $query = $CI->db->order_by('suppliername', 'ASC')->get('tbl_supplier');
+                    $field_key = "supplierno";
+                    $field_val = "suppliername";
+                    break;
                 // case 'country':
                 //     $query = $CI->db->order_by('name', 'ASC')->get('settings_country');
                 //     $field_key = "id";

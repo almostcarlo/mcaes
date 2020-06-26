@@ -17,3 +17,4 @@ $(document).ready(function() {
         format: 'YYYY-MM-DD'
     });
 });
+

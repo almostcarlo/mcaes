@@ -59,6 +59,17 @@ class Procurement_model extends CI_Model {
                     $desc = "New supplier has been created.";
                     $return_value = $this->db->insert_id();
                 break;
+
+            /*TEMPORARY SUPPLIER LIST IN CANVASS FORM*/
+            case 'supplier_temp':
+                    $this->db->set('itemno', $_POST['htextItemNo']);
+                    $this->db->set('unitprc', $_POST['textPrice_'.$_POST['htextItemNo']]);
+                    $this->db->set('supplierid', $_POST['htextSupplierNo_'.$_POST['htextItemNo']]);
+                    $this->db->insert('tbl_canvasstmp');
+
+                    $desc = "New supplier has been created.";
+                    $return_value = $this->db->insert_id();
+                break;
             }
 
             if($this->db->trans_complete()){

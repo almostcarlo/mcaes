@@ -40,7 +40,7 @@
                                         <label for="">Supplier Name:<span class="required"> *</span></label>
                                         <input type="text" required class="form-control" name="textName" id="textName" value="<?php echo $info['suppliername']?>" />
                                         <span class="input-group-btn" style="top:9px;">
-                                            <button href="<?php echo BASE_URL;?>procurement/modal/supplier" class="btn btn-default modal_btn" label="Supplier" type="button"><i class="fa fa-chevron-right"></i></button>
+                                            <button href="<?php echo BASE_URL;?>procurement/modal/supplier" class="btn btn-default modal_btn" label="Supplier" type="button" parent_form_id="form_supplier"><i class="fa fa-chevron-right"></i></button>
                                         </span>
                                     </div>
                                 </div>

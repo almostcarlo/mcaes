@@ -1,15 +1,8 @@
 <form id="form_modal_supplier">
-    <input type="hidden" id="htextFormID" value="">
+    <input type="text" id="htextFormID" value="">
+    <input type="text" id="htextItemNo" value="">
     <div role="tabpanel" class="tab-pane active" id="applicant-name">
             <div class="form-group">
-                <!-- <label for="inputSearchApplicantName">Search by Request No.:</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="inputSearchApplicantName"/>
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                </div> -->
-                
                 <table id="tableReq" class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
@@ -23,8 +16,8 @@
                     <tbody>
                     	<?php foreach($info as $i):?>
 	                        <tr>
-	                            <td><a href="<?php echo BASE_URL;?>procurement/forms/supplier-manager.php?id=<?php echo $i['supplierno']?>"><?php echo $i['supplierno']?></a></td>
-	                            <td><a href="<?php echo BASE_URL;?>procurement/forms/supplier-manager.php?id=<?php echo $i['supplierno']?>"><?php echo $i['suppliername'];?></a></td>
+	                            <td><a href="javascript:send_to_parent('<?php echo $i['supplierno']?>','<?php echo $i['suppliername'];?>');"><?php echo $i['supplierno']?></a></td>
+	                            <td><a href="javascript:send_to_parent('<?php echo $i['supplierno']?>','<?php echo $i['suppliername'];?>');"><?php echo $i['suppliername'];?></a></td>
 	                            <td><?php echo $i['contactperson'];?></td>
 	                            <td><?php echo $i['email'];?></td>
 	                        </tr>
@@ -39,3 +32,14 @@
     
     
 </form>
+<script type="text/javascript">
+    function send_to_parent(this_value, value_2){
+        if($('#htextFormID').val() == 'form_supplier'){
+            window.location.replace(base_url_js+'procurement/forms/supplier-manager.php?id='+this_value);
+        }else{
+            $('#htextSupplierNo_'+$('#htextItemNo').val(), '#form_canvass').val(this_value);
+            $('#textSupplierName_'+$('#htextItemNo').val(), '#form_canvass').val(value_2);
+            $('#myModal').modal('hide');
+        }
+    }
+</script>

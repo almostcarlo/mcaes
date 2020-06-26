@@ -49,7 +49,6 @@
             $('#myModal').modal('hide');
 
             /*GET REQUISITION ITEMS*/
-            
              $.get(base_url_js+'procurement/ajax/req_details/get', {reqno:this_value}, function(data) {
                  $('#req_item_cont', '#form_canvass').html(data);
              });

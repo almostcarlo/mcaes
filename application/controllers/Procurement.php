@@ -96,8 +96,19 @@ class Procurement extends CI_Controller {
 				break;
 			case 'req_details':
 				$data['uom'] = get_items_from_cache("unit");
+				$data['supplier'] = get_items_from_cache("supplier");
 				$data['info'] = getdata("select * from tbl_requestdtl where 1 and reqno = '{$_GET['reqno']}'");
+				$data['req_dtl'] = array();
+				$req_dtl = getdata("select * from tbl_canvasstmp where 1");
+				if($req_dtl){
+					foreach($req_dtl as $r){
+						$data['req_dtl'][$r['itemno']][$r['sn']] = $r;
+					}
+				}
+
 				$return_id = $this->load->view('procurement/requisition-details', $data, TRUE);
+
+				/*get supplier details*/
 				break;
 		}
 
